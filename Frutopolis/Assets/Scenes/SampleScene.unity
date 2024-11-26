@@ -1161,6 +1161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 350
   maxDistance: 3
+  maxFlightTime: 5
 --- !u!50 &1764890095
 Rigidbody2D:
   serializedVersion: 5
@@ -1602,8 +1603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7c57db5a5e7d741894bb454e4b10be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  duracionAtaque: 0.5
+  animator: {fileID: 1921548091}
+  porcentajePausa: 0.75
 --- !u!1 &1937021035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,7 +1621,7 @@ GameObject:
   - component: {fileID: 1937021041}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
