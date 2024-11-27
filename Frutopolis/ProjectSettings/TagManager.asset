@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemigo
+  - Ground
+  - Disparo
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX
