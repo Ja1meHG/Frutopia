@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gnarly-spine_poster02_0: -6208267204309775556
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
