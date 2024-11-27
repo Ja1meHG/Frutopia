@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Sprite corazonDesactivado;
     [SerializeField] private GameObject panelGameOver;
     [SerializeField] private TMPro.TextMeshProUGUI textoDerrota;
+    [SerializeField] private GameObject panelGanador;
     [SerializeField] private TMPro.TextMeshProUGUI textoGanador;
 
     private bool isPaused = false;
@@ -59,7 +60,7 @@ public class UIManager : MonoBehaviour
 
     public void MostrarPantallaGanador(string ganador)
     {
-        panelGameOver.SetActive(true);
+        panelGanador.SetActive(true);
         textoGanador.text = "El ganador es " + ganador;
     }
 
