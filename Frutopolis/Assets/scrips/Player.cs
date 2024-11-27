@@ -8,21 +8,42 @@ public class Player : MonoBehaviour
     public float porcentajePausa = 0.75f; // Punto de pausa (75% de la animación)
     private Animator animator;
 
+
+    [SerializeField] private UIManager uiManager;
+
+    void Start()
+    {
+        if (animator == null)
+        {
+            animator = GetComponent<Animator>();
+        }
+    }
+
     public void TakeDamage(int damage)
     {
+        if (playerHealth <= 0)
+        {
+            Debug.Log(playerName + " ha sido derrotado.");
+            return;
+        }
         playerHealth -= damage;
         Debug.Log(playerName + " ha recibido " + damage + " puntos de daño. Salud restante: " + playerHealth);
-    }   
+        // Activar animación de daño por un breve tiempo
+        animator.SetBool("dañado", true);
+        Invoke("StopDamageAnimation", 0.5f);
+        uiManager.RestaCorazones(playerHealth);
+    }
+
+    private void StopDamageAnimation()
+    {
+        animator.SetBool("dañado", false);
+    }
 
     void Update()
     {
         // Si el jugador presiona el botón izquierdo del ratón se activa la animación de ataque
         if (Input.GetMouseButton(0))
         {
-            if (animator == null)
-            {
-                animator = GetComponent<Animator>();
-            }
 
             // Iniciar ataque
             animator.SetBool("atacando", true); // Activar animación de ataque
@@ -37,12 +58,10 @@ public class Player : MonoBehaviour
         }
         else
         {
-            // Reanudar animación al soltar el botón
-            if (animator != null)
-            {
-                animator.speed = 1f; // Reanudar velocidad normal
-                animator.SetBool("atacando", false); // Volver a Idle
-            }
+            animator.speed = 1f; // Reanudar velocidad normal
+            animator.SetBool("atacando", false); // Volver a Idle
         }
+
     }
+
 }

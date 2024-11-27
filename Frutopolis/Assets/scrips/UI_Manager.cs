@@ -11,18 +11,16 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Sprite corazonDesactivado;
     [SerializeField] private GameObject panelGameOver;
     [SerializeField] private TMPro.TextMeshProUGUI textoDerrota;
+    [SerializeField] private TMPro.TextMeshProUGUI textoGanador;
 
     private bool isPaused = false;
     private string[] frasesDerrota = {
-        "!Miau-serable derrota! !Inténtalo de nuevo!",
-        "!No te preocupes! !Tienes 7 vidas más!",
-        "!Parece que hoy el perro tuvo un buen día... y tú no! !A seguir entrenando!",
-        "!Te dejaron con los pelos de punta... y no precisamente de emoción! !Vuelve a intentarlo!",
-        "!Parece que necesitas más que bolas de estambre para vencer a ese perro! !Piensa en una nueva estrategia!",
-        "!Ups! Parece que el desarrollador del juego hizo al perro muy fuerte. !Perdón!",
-        "!No te rindas! !El programador está trabajando en una actualización para que los gatos sean más poderosos!",
-        "!Error 404: Victoria no encontrada! !Inténtalo de nuevo!",
-        "!Parece que te mandaron al paraíso de los gatos... !pero puedes volver!"
+        "Jugador 1 ha sido derrotado",
+        "Jugador 2 ha sido derrotado",
+        "¡Has perdido!",
+        "¡Inténtalo de nuevo!",
+        "¡No te rindas!",
+        "¡Sigue intentándolo!",
     };
 
     void Start()
@@ -59,5 +57,10 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void MostrarPantallaGanador(string ganador)
+    {
+        panelGameOver.SetActive(true);
+        textoGanador.text = "El ganador es " + ganador;
+    }
 
 }

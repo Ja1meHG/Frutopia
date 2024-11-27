@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
 
     private Player currentPlayer; // Jugador actual
     private Player opponentPlayer; // Jugador contrario
+    [SerializeField] private UIManager uiManager;
 
     void Start()
     {
@@ -51,11 +52,13 @@ public class GameController : MonoBehaviour
     {
         if (player1.playerHealth <= 0)
         {
+            uiManager.MostrarPantallaGanador("Jugador 2");
             Debug.Log("Jugador 2 gana!");
             EndGame();
         }
         else if (player2.playerHealth <= 0)
         {
+            uiManager.MostrarPantallaGanador("Jugador 1");
             Debug.Log("Jugador 1 gana!");
             EndGame();
         }
@@ -66,4 +69,5 @@ public class GameController : MonoBehaviour
         Debug.Log("Fin del juego.");
         Time.timeScale = 0; // Detener el juego
     }
+
 }
