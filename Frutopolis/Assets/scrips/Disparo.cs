@@ -92,16 +92,30 @@ public class Disparo : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log($"Colisión detectada con: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
+            Debug.Log($"Colisión detectada con: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
 
-        if (!isDestroying)
+    if (!isDestroying)
+    {
+        // Verifica si colisiona con un enemigo
+        if (collision.gameObject.CompareTag("Enemigo"))
         {
-            if (collision.gameObject.CompareTag("Enemigo") || collision.gameObject.CompareTag("Ground"))
+            Debug.Log("Impacto detectado en el enemigo.");
+
+            // Obtén el script del enemigo y reduce su vida
+            Player2 enemy = collision.gameObject.GetComponent<Player2>();
+            if (enemy != null)
             {
-                Debug.Log("Iniciando secuencia de destrucción...");
-                StartDestroySequence();
+                enemy.PersonajeHurt();
             }
+
+            StartDestroySequence();
         }
+        else if (collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("Impacto detectado en el suelo.");
+            StartDestroySequence();
+        }
+    }
     }
 
     private void StartDestroySequence()
