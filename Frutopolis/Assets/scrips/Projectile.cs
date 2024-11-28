@@ -14,6 +14,7 @@ public class Projectile : MonoBehaviour
     private GameController gameController;
     private CameraController cameraController;
     private Animator animator;
+    [SerializeField] private AudioSource efecto;
 
     public void Initialize(Player owner, Player target, GameController controller, CameraController cameraController)
     {
@@ -130,6 +131,7 @@ public class Projectile : MonoBehaviour
         {
             Debug.Log($"Impacto en {target.playerName}");
             target.TakeDamage(damage);
+            efecto.Play();
 
             gameController.CheckGameOver();
         }
@@ -137,8 +139,10 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("Impacto en el suelo.");
+            efecto.Play();
         }
 
+        // efecto.Play();
         StartDestroySequence();
     }
 
